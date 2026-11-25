@@ -27,7 +27,7 @@
 ## 目录
 
 - [这是什么](#这是什么)
-- [支持矩阵](#支持矩阵)
+- [已知路线（示例）](#已知路线示例)
 - [工具](#工具)
 - [环境要求](#环境要求)
 - [安装](#安装)
@@ -35,6 +35,7 @@
 - [完整流程：美版《Soul Sacrifice Delta》合并到 1.30](#完整流程美版soul-sacrifice-delta合并到-130)
 - [命令参考](#命令参考)
 - [工作原理](#工作原理)
+- [移植其他 PSV 游戏](#移植其他-psv-游戏)
 - [兼容数据](#兼容数据)
 - [美版的中文](#美版的中文)
 - [常见问题](#常见问题)
@@ -60,7 +61,9 @@
 
 全部是 Python 标准库脚本。不需要 `pip install`，不需要编译，仓库里没有游戏数据。
 
-## 支持矩阵
+这个工具集不绑定《Soul Sacrifice Delta》。它只是完整示例，因为这条路线记录得最全；脚本本身只关心一份 PS Vita dump 的结构、`TITLE_ID`、`APP_VER` 和更新层。
+
+## 已知路线（示例）
 
 | Title ID | 区 | Vita3K | 原生重编译 | 中文 |
 |---|---|---|---|---|
@@ -71,6 +74,8 @@
 | `PCSA00092` | 美（2013 原版） | Playable | —（两个项目都只做 Delta） | — |
 
 > Vita3K 的“Playable”是按同款最好的区汇总的；逐条看，亚洲版实际是 `Ingame +`。
+
+`psv-lookup.py` 覆盖完整的 Vita3K 商业游戏列表和它认识的 Nativ pack；上表只是这个仓库围绕的路线，不是脚本的能力上限。见[移植其他 PSV 游戏](#移植其他-psv-游戏)。
 
 ¹ 美版 1.30 的 archive 里有 `_cn` / `_tw` 文本表和字体（`achievement_text_cn.msgt`、`elder_cn_font0.gxt`、`font_config_cn.csv` 等）。在 ss-delta 里设 `[game] language = chinese_s` 或 `chinese_t` 即可；本工具不修改游戏语言。
 
@@ -248,6 +253,19 @@ flowchart LR
 
 补丁之所以要合并：NoNpDrm 的 dump 在 `ux0` 里是分层的（`app/`、`patch/`、`addcont/`），
 Vita 挂载时 patch 覆盖 app 的同名文件；PC 侧重编译要的是一棵已经合并好的树。
+
+## 移植其他 PSV 游戏
+
+脚本不绑定《Soul Sacrifice Delta》。任何 PS Vita dump 都能检查和合并；变的是重编译那一侧。
+
+| 情况 | 你要做什么 | 工作量 |
+|---|---|---|
+| 有对应 Title ID + 版本的 Nativ pack | 校验 dump、按 pack 要求合并补丁、用 Nativ | 几分钟到一小时 |
+| ss-delta 支持 | 校验、合并 1.30、编译 ss-delta | 一次工具链构建 |
+| 没有现成 pack | 新建 recomp 项目：`pack-init` / `bootstrap` / `hookmap`；工具仍负责校验和准备 dump | 几天到几周，看游戏 |
+| 只能模拟器 | Vita3K | 几分钟 |
+
+`check-dump.py` 内置的是 SSD 几个 SKU 的哈希；其他游戏仍会输出 `TITLE_ID`、`APP_VER` 和 eboot 哈希，但结论是“需人工判路线”，直到你把该游戏的已知哈希/版本加进 `TARGETS`。
 
 ## 兼容数据
 

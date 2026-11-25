@@ -27,7 +27,7 @@
 ## Contents
 
 - [What this is](#what-this-is)
-- [Supported titles](#supported-titles)
+- [Known routes (examples)](#known-routes-examples)
 - [Tools](#tools)
 - [Requirements](#requirements)
 - [Install](#install)
@@ -35,6 +35,7 @@
 - [Full walkthrough: US Soul Sacrifice Delta to 1.30](#full-walkthrough-us-soul-sacrifice-delta-to-130)
 - [Command reference](#command-reference)
 - [How it works](#how-it-works)
+- [Porting another PS Vita title](#porting-another-ps-vita-title)
 - [Compatibility data](#compatibility-data)
 - [Chinese text on the US release](#chinese-text-on-the-us-release)
 - [FAQ](#faq)
@@ -60,7 +61,9 @@ This toolkit handles the four steps before that:
 
 Everything is standard-library Python. No `pip install`, no build step, no game data in the repo.
 
-## Supported titles
+This toolkit is not tied to Soul Sacrifice Delta. That game is the worked example because its routes are well documented; the scripts themselves only care about a PS Vita dump's structure, `TITLE_ID`, `APP_VER` and update layer.
+
+## Known routes (examples)
 
 | Title ID | Region | Vita3K | Native recompilation | Chinese |
 |---|---|---|---|---|
@@ -71,6 +74,8 @@ Everything is standard-library Python. No `pip install`, no build step, no game 
 | `PCSA00092` | US (2013 original) | Playable | — (both projects only target Delta) | — |
 
 > Vita3K's “Playable” is the best result across all regions. The Asia release is listed as `Ingame +` per title.
+
+`psv-lookup.py` covers the full Vita3K commercial list and the Nativ packs it knows about; the rows above are the routes this repo was built around, not the limit of the scripts. See [Porting another PS Vita title](#porting-another-ps-vita-title).
 
 ¹ The US 1.30 archive contains `_cn` and `_tw` message tables and fonts (`achievement_text_cn.msgt`, `elder_cn_font0.gxt`, `font_config_cn.csv`, …). In ss-delta set `[game] language = chinese_s` or `chinese_t`; this toolkit does not change the game's language.
 
@@ -248,6 +253,19 @@ flowchart LR
 ```
 
 The merge step exists because a NoNpDrm dump is layered in `ux0`: `app/` is the base, `patch/` is the update and `addcont/` is DLC. Vita mounts patch over app; a PC recompiler wants one merged tree.
+
+## Porting another PS Vita title
+
+The scripts are not tied to Soul Sacrifice Delta. Any PS Vita dump can be inspected and, if it has an update layer, merged; what changes is the recompilation side.
+
+| Situation | What you do | Effort |
+|---|---|---|
+| A Nativ pack exists for the exact Title ID and version | Check the dump, merge the update the pack expects, then use Nativ | Minutes to an hour |
+| ss-delta supports the title | Check the dump, merge 1.30, build ss-delta | One toolchain build |
+| No pack exists | You need a new recomp project: `pack-init`, `bootstrap`, `hookmap`; the toolkit still validates and prepares the dump | Days to weeks, game-dependent |
+| Emulator only | Vita3K | Minutes |
+
+`check-dump.py` has built-in hashes for the Soul Sacrifice Delta SKUs. For another title it still prints `TITLE_ID`, `APP_VER` and the eboot hash, but the verdict is “manual route” until you add that title's known hash/version to `TARGETS`.
 
 ## Compatibility data
 
