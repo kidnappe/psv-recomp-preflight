@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="docs/assets/banner.svg" alt="PSV Recomp Toolkit" width="100%">
+  <img src="docs/assets/banner.svg" alt="PSV Recomp Preflight" width="100%">
 </p>
 
-<h1 align="center">PSV Recomp Toolkit</h1>
+<h1 align="center">PSV Recomp Preflight</h1>
 
 <p align="center">
-  <em>先验材料，再谈重编译。查区码、找补丁、合更新层、选路线。</em>
+  <em>先查 dump，再装工具链。查区码、找补丁、合更新层、一次编译通过。</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/kidnappe/psv-recomp-toolkit/actions/workflows/ci.yml"><img src="https://github.com/kidnappe/psv-recomp-toolkit/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/kidnappe/psv-recomp-preflight/actions/workflows/ci.yml"><img src="https://github.com/kidnappe/psv-recomp-preflight/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-65a30d?style=flat" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=fff" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-4b5563" alt="Platform">
@@ -22,10 +22,11 @@
 
 > **本仓库不包含任何游戏数据。** 没有游戏本体、补丁 pkg、固件、授权文件、解密资源或编译产物。请使用自己合法持有的副本。
 >
-> **这里也不是重编译器本身。** 它只负责判断 dump 能不能用、找官方补丁、把材料整理成重编译器要的形状。重编译器在 [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) 和 [Project Nativ](https://github.com/TheLostPantheon/nativ)。
+> **这里也不是重编译器本身。** 它是构建前的 preflight：判断 dump 能不能用、找官方补丁、把材料整理成重编译器要的形状。重编译器在 [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) 和 [Project Nativ](https://github.com/TheLostPantheon/nativ)。
 
 ## 目录
 
+- [为什么叫 preflight](#为什么叫-preflight)
 - [这是什么](#这是什么)
 - [已知路线（示例）](#已知路线示例)
 - [工具](#工具)
@@ -45,6 +46,14 @@
 - [参与贡献](#参与贡献)
 - [致谢](#致谢)
 - [许可](#许可)
+
+## 为什么叫 preflight
+
+大多数 PSV 重编译失败发生在编译器之前：区码不对、1.30 更新没合、`app/` + `patch/` 分层没处理。每一个都要用一次工具链安装或一次失败构建来换。
+
+这个仓库用几十秒把这三件事查清楚，并准备好重编译器能接受的目录。它刻意做得很小：`pkg2zip` 继续负责解包，Vita3K 继续提供兼容数据，ss-delta / Nativ 继续负责重编译。
+
+如果你已经有确认无误、已经合并好的 dump，可以不用它；它服务于“构建之前”那一步。
 
 ## 这是什么
 
@@ -98,8 +107,8 @@
 ## 安装
 
 ```powershell
-git clone https://github.com/kidnappe/psv-recomp-toolkit.git
-cd psv-recomp-toolkit
+git clone https://github.com/kidnappe/psv-recomp-preflight.git
+cd psv-recomp-preflight
 ```
 
 没有安装步骤。以下命令都在仓库根目录执行。

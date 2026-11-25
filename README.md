@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="docs/assets/banner.svg" alt="PSV Recomp Toolkit" width="100%">
+  <img src="docs/assets/banner.svg" alt="PSV Recomp Preflight" width="100%">
 </p>
 
-<h1 align="center">PSV Recomp Toolkit</h1>
+<h1 align="center">PSV Recomp Preflight</h1>
 
 <p align="center">
-  <em>Validate the dump. Find the patch. Merge the layers. Pick the route.</em>
+  <em>Validate the dump. Find the patch. Merge the layers. Build once.</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/kidnappe/psv-recomp-toolkit/actions/workflows/ci.yml"><img src="https://github.com/kidnappe/psv-recomp-toolkit/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/kidnappe/psv-recomp-preflight/actions/workflows/ci.yml"><img src="https://github.com/kidnappe/psv-recomp-preflight/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-65a30d?style=flat" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=fff" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-4b5563" alt="Platform">
@@ -22,10 +22,11 @@
 
 > **This repository ships no game data.** No game dumps, update packages, firmware, licence files, decrypted assets or compiled game code. Bring your own legally obtained copy.
 >
-> **This is not the recompiler.** It is the toolkit that checks whether a dump can feed one, finds the official update, and prepares the tree the recompiler expects. The recompilers themselves live in [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) and [Project Nativ](https://github.com/TheLostPantheon/nativ).
+> **This is not the recompiler.** It is the preflight check that asks whether a dump can feed one, finds the official update, and prepares the tree the recompiler expects. The recompilers themselves live in [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) and [Project Nativ](https://github.com/TheLostPantheon/nativ).
 
 ## Contents
 
+- [Why preflight](#why-preflight)
 - [What this is](#what-this-is)
 - [Known routes (examples)](#known-routes-examples)
 - [Tools](#tools)
@@ -45,6 +46,14 @@
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
+
+## Why preflight
+
+Most failed PS Vita recomp attempts fail before the compiler: the dump is the wrong region, the 1.30 update is missing, or the `app/` + `patch/` layers were never merged. Each mistake costs a toolchain install or a failed build.
+
+This repository makes those three visible in seconds and prepares a tree the recompiler accepts. It is deliberately small: `pkg2zip` still unpacks, Vita3K still supplies the compatibility data, and ss-delta / Nativ still do the recompilation.
+
+If you already have a known-good, merged dump, you may not need it. It is for the step before the build.
 
 ## What this is
 
@@ -98,8 +107,8 @@ This toolkit is not tied to Soul Sacrifice Delta. That game is the worked exampl
 ## Install
 
 ```powershell
-git clone https://github.com/kidnappe/psv-recomp-toolkit.git
-cd psv-recomp-toolkit
+git clone https://github.com/kidnappe/psv-recomp-preflight.git
+cd psv-recomp-preflight
 ```
 
 There is nothing to install. Run the scripts from the repository root.

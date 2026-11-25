@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="PSV Recomp Toolkit">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="PSV Recomp Preflight">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#060a13"/>
@@ -27,7 +27,7 @@
 
   <text x="98" y="128" fill="#f2f6ff"
         font-family="Segoe UI, Inter, Arial, sans-serif"
-        font-size="58" font-weight="700" letter-spacing="-1">PSV Recomp Toolkit</text>
+        font-size="58" font-weight="700" letter-spacing="-1">PSV Recomp Preflight</text>
 
   <text x="100" y="178" fill="#9db7e8"
         font-family="Segoe UI, Inter, Arial, sans-serif"
@@ -44,10 +44,10 @@
           font-size="40" font-weight="700">PSV</text>
     <text x="91" y="94" text-anchor="middle" fill="#6f86b3"
           font-family="Segoe UI, Inter, Arial, sans-serif"
-          font-size="13" letter-spacing="3">TOOLKIT</text>
+          font-size="12" letter-spacing="2.2">PREFLIGHT</text>
     <line x1="24" y1="112" x2="158" y2="112" stroke="#2a4675"/>
     <text x="91" y="134" text-anchor="middle" fill="#8fb3ff"
           font-family="Segoe UI, Inter, Arial, sans-serif"
-          font-size="10" letter-spacing="1.6">DUMP → PATCH → BUILD</text>
+          font-size="10" letter-spacing="1.4">CHECK → MERGE → BUILD</text>
   </g>
 </svg>
