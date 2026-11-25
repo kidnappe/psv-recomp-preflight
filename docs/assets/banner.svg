@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="PSV Recomp Toolkit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060a13"/>
+      <stop offset="0.55" stop-color="#0b1834"/>
+      <stop offset="1" stop-color="#081021"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7ee0ff"/>
+      <stop offset="1" stop-color="#3f7cff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.15" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#2f6bff" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="300" fill="url(#bg)"/>
+  <rect width="1280" height="300" fill="url(#glow)"/>
+
+  <g stroke="#24406e" stroke-width="1" opacity="0.32">
+    <path d="M0 60 H1280 M0 120 H1280 M0 180 H1280 M0 240 H1280"/>
+    <path d="M160 0 V300 M320 0 V300 M480 0 V300 M640 0 V300 M800 0 V300 M960 0 V300 M1120 0 V300"/>
+  </g>
+
+  <rect x="64" y="62" width="8" height="176" rx="4" fill="url(#accent)"/>
+
+  <text x="98" y="128" fill="#f2f6ff"
+        font-family="Segoe UI, Inter, Arial, sans-serif"
+        font-size="58" font-weight="700" letter-spacing="-1">PSV Recomp Toolkit</text>
+
+  <text x="100" y="178" fill="#9db7e8"
+        font-family="Segoe UI, Inter, Arial, sans-serif"
+        font-size="24">Validate the dump. Find the patch. Merge the layers.</text>
+
+  <text x="100" y="214" fill="#6f86b3"
+        font-family="Segoe UI, Inter, Arial, sans-serif"
+        font-size="17" letter-spacing="0.2">PS Vita → PC static recompilation, without the guesswork.</text>
+
+  <g transform="translate(1034 78)">
+    <rect width="182" height="144" rx="20" fill="#0d1a33" stroke="#2a4675"/>
+    <text x="91" y="62" text-anchor="middle" fill="#7ee0ff"
+          font-family="Segoe UI, Inter, Arial, sans-serif"
+          font-size="40" font-weight="700">PSV</text>
+    <text x="91" y="94" text-anchor="middle" fill="#6f86b3"
+          font-family="Segoe UI, Inter, Arial, sans-serif"
+          font-size="13" letter-spacing="3">TOOLKIT</text>
+    <line x1="24" y1="112" x2="158" y2="112" stroke="#2a4675"/>
+    <text x="91" y="134" text-anchor="middle" fill="#8fb3ff"
+          font-family="Segoe UI, Inter, Arial, sans-serif"
+          font-size="10" letter-spacing="1.6">DUMP → PATCH → BUILD</text>
+  </g>
+</svg>
