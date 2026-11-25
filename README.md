@@ -350,10 +350,16 @@ Soul Sacrifice Delta, PlayStation, PS Vita and related marks belong to their res
 
 ## Acknowledgements
 
-- [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) — US static recompilation
-- [Project Nativ](https://github.com/TheLostPantheon/nativ) and [Luufen's fork](https://github.com/Luufen/nativ) — EU packs
-- [Vita3K](https://vita3k.org/) — the reference emulator and compatibility data
+This toolkit is the small part. The hard part is upstream:
+
+- [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) — the upstream Soul Sacrifice Delta port this workflow is built around: static recompilation, 60 fps, saves, DLC and Ad Hoc Play
+- [vita-recomps/vita3k](https://github.com/vita-recomps/vita3k) — the single-game Vita3K fork used by that port
+- [vita-recomps/vita-recomp-kit](https://github.com/vita-recomps/vita-recomp-kit) — the recompiler, build/install scripts and tooling
+- [Vita3K](https://vita3k.org/) — the emulator, HLE and compatibility data the fork is based on
+- [Project Nativ](https://github.com/TheLostPantheon/nativ) and [Luufen's fork](https://github.com/Luufen/nativ) — Nativ packs and tooling for other titles
 - [pkg2zip](https://github.com/lusid1/pkg2zip) — package extraction
+
+The port itself is maintained upstream; this repository is an independent companion, not a from-scratch port.
 
 ## License
 

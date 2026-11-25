@@ -358,10 +358,16 @@ Soul Sacrifice Delta、PlayStation、PS Vita 及相关名称与商标归各自�
 
 ## 致谢
 
-- [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) — 美版静态重编译
-- [Project Nativ](https://github.com/TheLostPantheon/nativ) 与 [Luufen 的 fork](https://github.com/Luufen/nativ) — 欧版 pack
-- [Vita3K](https://vita3k.org/) — 参考模拟器与兼容数据
+这个工具集只是外围的小活，重活是上游做的：
+
+- [vita-recomps/ss-delta](https://github.com/vita-recomps/ss-delta) — 上游的《Soul Sacrifice Delta》原生移植，本仓库的流程就是围绕它整理的：静态重编译、60fps、存档、DLC、Ad Hoc
+- [vita-recomps/vita3k](https://github.com/vita-recomps/vita3k) — 该移植使用的单游戏 Vita3K fork
+- [vita-recomps/vita-recomp-kit](https://github.com/vita-recomps/vita-recomp-kit) — 重编译器、构建/安装脚本和工具
+- [Vita3K](https://vita3k.org/) — fork 所基于的模拟器、HLE 与兼容数据
+- [Project Nativ](https://github.com/TheLostPantheon/nativ) 与 [Luufen 的 fork](https://github.com/Luufen/nativ) — 其他标题的 Nativ pack 和工具
 - [pkg2zip](https://github.com/lusid1/pkg2zip) — pkg 解包
+
+port 本身由上游维护；本仓库是独立配套工具，不是从零开始的移植。
 
 ## 许可
 
